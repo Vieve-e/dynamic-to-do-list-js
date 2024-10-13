@@ -22,26 +22,31 @@ document.addEventListener("DOMContentLoaded" , function(){
     }
     if (taskText !== "") {
       // Create a new <li> element (list item)
-      const listItem = document.createElement('li');
+      const task = document.createElement('li');
       // Set the text inside the list item to the teskText
-      listItem.textContent = teskTask;
+      task.classList.add('task');
+      taskText.textContent = "tesk added";
       //Create a new button element for removing the task
-      const removeButton = document.createElement("button");
+      const removeTaskButton = document.createElement("remove-button");
       // Set the button's text to "Remove"
-      removeButton.textContent = "Remove";
+      removeTaskButton.classList.add ('remove-task');
+      removeTaskButton.textContent = "Remove";
       // Give the button a class so we can style it later
-      removeButton.className = 'remove-btn';
+      removeTaskButton.addEventListener('click', function() {
+        taskElement.remove();
+        saveTasks();
+    }); 
     }
     // Add a fundtion to be called when the remove button is called
-    removeButton.onclick = function (){
+    removeTaskButton.onclick = function (){
         // When clicked, remove this list item from the task list
-        listItem.remove();
+        taskList.remove();
     };
     // Add the remove button to the list item
-    listItem.appendChild(removeButton);
+    taskList.appendChild(removeTaskButton);
 
     // Add the list item (with the button) to the task list
-    taskList.appendChild(listItem);
+    taskList.appendChild(task);
 
     // Clear the input field to make it ready for the next task
     taskInput.value = "";
