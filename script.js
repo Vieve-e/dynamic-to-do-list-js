@@ -27,23 +27,23 @@ document.addEventListener("DOMContentLoaded" , function(){
       task.classList.add('task');
       taskText.textContent = "tesk added";
       //Create a new button element for removing the task
-      const removeTaskButton = document.createElement("remove-button");
+      const removeTaskBtn = document.createElement("remove-btn");
       // Set the button's text to "Remove"
-      removeTaskButton.classList.add ('remove-task');
-      removeTaskButton.textContent = "Remove";
+      removeTaskBtn.classList.add ('remove-task');
+      removeTaskBtn.textContent = "Remove";
       // Give the button a class so we can style it later
-      removeTaskButton.addEventListener('click', function() {
+      removeTaskBtn.addEventListener('click', function() {
         taskElement.remove();
         saveTasks();
     }); 
     }
     // Add a fundtion to be called when the remove button is called
-    removeTaskButton.onclick = function (){
+    removeTaskBtn.onclick = function (){
         // When clicked, remove this list item from the task list
-        taskList.remove();
+        taskList.removeChild(this.psrentNode);
     };
     // Add the remove button to the list item
-    taskList.appendChild(removeTaskButton);
+    taskList.appendChild(removeTaskBtn);
 
     // Add the list item (with the button) to the task list
     taskList.appendChild(task);
